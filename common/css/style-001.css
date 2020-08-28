@@ -1,0 +1,168 @@
+:root {
+  --main-color: #fff;
+  --element-radius: 1em;
+  --obs-background: #181819;
+  --obs-button-background: #162458;
+  --obs-button-border: #233166;
+  --obs-button-hover-background: #581624;
+  --obs-button-hover-border: #84162d;
+  --obs-button-color: #fff
+}
+
+@import "normalize.css";
+@import "../fonts/RobotoCondensed/font.css";
+
+*:focus {outline:none !important}
+
+
+
+/*CLOCK*/
+body.browser-source.clock{
+	margin:0;
+	font: bold 6vw 'Roboto Condensed', sans-serif;
+	color: var(--main-color);
+	text-align:right;
+}
+
+#div-clock {
+    padding: .2em .5em;
+    background: rgba(0,0,0,.2);
+    display: inline-block;
+    line-height: 1;
+	border-radius: var(--element-radius);
+}
+
+/*OBS*/
+.panel {
+	background: var(--obs-background);
+	color: var(--main-color);
+	font:normal 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	max-width:100em;
+	margin:1em;
+	}
+	
+.panel input#lower-thirds-name, .panel input#lower-thirds-function {
+	box-sizing: border-box;
+	padding:.75em;
+	margin:0 0 1em;
+	border:none;
+	display:block;
+	width:100%;
+}
+	
+.panel button{
+	background: var(--obs-button-background);
+	border: 1px solid var(--obs-button-border);
+	color: var(--obs-button-color);
+	padding:.75em;
+	margin:0 0 1em;
+	text-align:center;
+	width:100%;
+}
+
+.panel button.onethird{
+	width:30%;
+	float:left;
+	margin-right:2%
+}
+
+.panel button:hover{
+	background: var(--obs-button-hover-background);
+	border-color: var(--obs-button-hover-border);
+}
+
+.panel .radio-position{float: right;text-align:center}
+
+.panel .radio-position input{
+	width: 2em;
+	height:2em;
+	display:inline-block
+}
+
+.panel .radio-position input:checked{
+	background:red
+}
+	
+.panel ul#predefined {
+    list-style: none;
+    padding: 0;
+}
+
+.panel ul#predefined li .name, ul#predefined li .function {
+    display: inline-block;
+}	
+
+.panel ul#predefined li {
+    padding: .5em 1em;
+    border: 1px solid #555;
+    margin: 0 0 .25em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.panel ul#predefined li .function:before{ content: "\00a0(";}
+.panel ul#predefined li .function:after{ content: ")";}
+
+
+		body.browser-source.lower-thirds{
+		margin:0 2em;
+		position:relative;
+		overflow:hidden
+		}
+		
+		
+		#lower-third, #lower-third.left, #lower-third.right{
+		position:absolute;
+		display:inline-block;
+		transition: all .5s;
+		}
+		
+		
+		#lower-third.left{left:0}
+		#lower-third.right{right:0}
+		
+		#lower-third .left-block, #lower-third .right-block{
+		display:inline-block
+		}
+		
+		#lower-third .left-block{
+		border-right:1px solid #333;
+		padding-right:.5em;
+		margin-right:.5em
+		}
+		
+		#lower-third .left-block img{
+		height:7em
+		}
+		
+	
+		body.browser-source.lower-thirds #lower-third #name {
+		font: bold 4vw 'Roboto Condensed', sans-serif;
+		color: #555;
+		left: 0;
+		top: 0;
+		}
+		
+		body.browser-source.lower-thirds #lower-third #function {
+		font: bold 2vw 'Roboto Condensed', sans-serif;
+		color: #999;
+		line-height:1;
+		top: 2.5em;
+		}
+
+
+#lower-third.animateIn.left{
+	left: 0;
+}
+
+#lower-third.animateOut.left{
+	left: -100vw;
+}
+
+#lower-third.animateIn.right{
+	right: 0;
+}
+
+#lower-third.animateOut.right{
+	right: -100vw;
+}
