@@ -1,14 +1,4 @@
-:root {
-  --main-color: #fff;
-  --element-radius: 1em;
-  --obs-background: #181819;
-  --obs-button-background: #162458;
-  --obs-button-border: #233166;
-  --obs-button-hover-background: #581624;
-  --obs-button-hover-border: #84162d;
-  --obs-button-color: #fff
-}
-
+@import "./color-schemes/acri.css";
 @import "normalize.css";
 @import "../fonts/RobotoCondensed/font.css";
 
