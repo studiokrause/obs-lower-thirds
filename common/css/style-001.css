@@ -73,13 +73,29 @@ body.browser-source.clock{
 .panel .radio-position{float: right;text-align:center}
 
 .panel .radio-position input{
-	width: 2em;
-	height:2em;
-	display:inline-block
+	position: absolute;
+	top: -200%;
+	left: -200%;
 }
-
 .panel .radio-position input:checked{
 	background:red
+}
+.panel .radio-position input + label:before {
+	background-size: 20px 20px !important;
+	content: '';
+	position: relative;
+	top: 5px;
+	width: 25px;
+	height: 20px;
+	display: inline-block;
+}
+.panel .radio-position label {
+	height: 30px;
+	width: 70px;
+	display:inline-block;
+	line-height: 30px;
+	text-align: end;
+	padding-right: 5px;
 }
 
 #settings-page {
@@ -97,11 +113,14 @@ body.browser-source.clock{
 .settings-page-show {
 	top: 1% !important;
 }
-#settings-page #close-settings {
+#settings-page #buttons {
 	position: absolute;
 	bottom: 0;
 	right: 10px;
+}
+#settings-page #buttons .button-settings {
 	width: 80px;
+	margin-right: 5px;
 }
 	
 .panel ul#predefined {

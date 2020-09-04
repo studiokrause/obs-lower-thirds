@@ -19,11 +19,13 @@
 		<button class="onethird" id="sender" onclick="function_add()">+</button>
 		<button class="onethird" id="sender" onclick="function_remove()">-</button>
 		  <div class="button-settings">
-		  	<button class="onethird" onclick="function_settings(1)">Settings</button>
+		  	<button class="onethird" onclick="function_settings('show')">Settings</button>
 		  </div>
 		  <div class="radio-position">
-                <input type="radio" name="radio-group-position" id="position-left" checked="checked" /><label for="position-left">Left</label>
-                <input type="radio" name="radio-group-position" id="position-right" /><label for="position-right">Right</label>
+                <input type="radio" name="radio-group-position" id="position-left" checked />
+		  		<label for="position-left">Left</label>
+                <input type="radio" name="radio-group-position" id="position-right" />
+				<label for="position-right">Right</label>
            </div>
 		   <div style="clear:both"></div>
 		   
@@ -32,7 +34,11 @@
 		<p>Theme</p>
 		<select name="color-scheme" id="color-scheme"></select>
 	</div>
-	<button id="close-settings" onclick="function_settings(0)">Ok</button>
+	<div id="buttons">
+		<button class="button-settings" onclick="function_settings('ok')">Ok</button>
+		<button class="button-settings" onclick="function_settings('apply')">Apply</button>
+		<button class="button-settings" onclick="function_settings('cancel')">Cancel</button>
+	</div>
 </div>
 </div>
 	</div>
@@ -44,7 +50,7 @@
 	<script>
 		//Load the color scheme style
 		
-		$('head').append('<link rel="stylesheet" href="../common/css/color-schemes/' + config.color_scheme + '.css"/>');
+		$('head').append('<link rel="stylesheet" href="../common/css/color-schemes/' + config.color_scheme + '/theme.css"/>');
 		
 		//Create the predefined list
 
@@ -85,10 +91,16 @@
 		///Open settings panel
 
 		function function_settings(btn) {
-			if(btn === 1) {
+			if(btn === 'show') {
 				$("#settings-page").addClass("settings-page-show");
 			}
-			else {
+			else if(btn === 'apply') {
+				alert('Not applicable from UI yet.');
+			}
+			else if(btn === 'ok') {
+				$("#settings-page").removeClass("settings-page-show");
+			}
+			else if(btn === 'cancel') {
 				$("#settings-page").removeClass("settings-page-show");
 			}
 		}
