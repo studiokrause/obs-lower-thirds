@@ -1,4 +1,3 @@
-@import "./color-schemes/acri.css";
 @import "normalize.css";
 @import "../fonts/RobotoCondensed/font.css";
 
@@ -32,6 +31,8 @@ body.browser-source.clock{
 	}
 	
 .panel input#lower-thirds-name, .panel input#lower-thirds-function {
+	background: var(--input-background);
+	color: var(--input-color);
 	box-sizing: border-box;
 	padding:.75em;
 	margin:0 0 1em;
@@ -51,7 +52,7 @@ body.browser-source.clock{
 }
 
 .panel button.onethird{
-	width:30%;
+	width:23%;
 	float:left;
 	margin-right:2%
 }
@@ -59,6 +60,14 @@ body.browser-source.clock{
 .panel button:hover{
 	background: var(--obs-button-hover-background);
 	border-color: var(--obs-button-hover-border);
+}
+
+.panel .button-settings {
+	position: relative;
+	width: 80px;
+}
+.panel .button-settings .onethird {
+	width: 100% !important;
 }
 
 .panel .radio-position{float: right;text-align:center}
@@ -72,6 +81,28 @@ body.browser-source.clock{
 .panel .radio-position input:checked{
 	background:red
 }
+
+#settings-page {
+	box-sizing: border-box;
+	background: var(--obs-background);
+	border: 5px solid var(--obs-button-border);
+	position: fixed;
+	top: -100%;
+	left: 5%;
+	width: 90%;
+	height: 400px;
+	padding: 5%;
+	transition: all 200ms ease;
+}
+.settings-page-show {
+	top: 1% !important;
+}
+#settings-page #close-settings {
+	position: absolute;
+	bottom: 0;
+	right: 10px;
+	width: 80px;
+}
 	
 .panel ul#predefined {
     list-style: none;
@@ -83,6 +114,7 @@ body.browser-source.clock{
 }	
 
 .panel ul#predefined li {
+	background: var(--obs-background-2);
     padding: .5em 1em;
     border: 1px solid #555;
     margin: 0 0 .25em;

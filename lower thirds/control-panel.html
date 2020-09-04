@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="../common/css/style-001.css">
 	<script src="../common/js/jquery.js"></script>
 	<script src="./names.json"></script>
+	<script src="./config.json"></script>
   </head>
   <body class="lower-thirds-panel panel">
 	<div class="static-panel-top">
@@ -15,13 +16,24 @@
 		<input id="lower-thirds-function" placeholder="Function">
 		<button class="onethird" id="sender" onclick="function_send()">Show</button>
 		<button class="onethird" id="sender" onclick="function_hide()">Hide</button>
+		<button class="onethird" id="sender" onclick="function_add()">+</button>
+		<button class="onethird" id="sender" onclick="function_remove()">-</button>
+		  <div class="button-settings">
+		  	<button class="onethird" onclick="function_settings(1)">Settings</button>
+		  </div>
 		  <div class="radio-position">
                 <input type="radio" name="radio-group-position" id="position-left" checked="checked" /><label for="position-left">Left</label>
                 <input type="radio" name="radio-group-position" id="position-right" /><label for="position-right">Right</label>
            </div>
 		   <div style="clear:both"></div>
 		   
-		
+<div id="settings-page">
+	<div id="theme">
+		<p>Theme</p>
+		<select name="color-scheme" id="color-scheme"></select>
+	</div>
+	<button id="close-settings" onclick="function_settings(0)">Ok</button>
+</div>
 </div>
 	</div>
 	<div class="panel-bottom">
@@ -30,11 +42,19 @@
 	<div>
 	
 	<script>
-		$.each(list.predefined, function (i, predefined) {
+		//Load the color scheme style
+		
+		$('head').append('<link rel="stylesheet" href="../common/css/color-schemes/' + config.color_scheme + '.css"/>');
+		
+		//Create the predefined list
+
+		$.each(list.predefined, function(i, predefined) {
 			predefined = '<li><div class="name">' + predefined.name + '</div><div class="function">' + predefined.function + '</div></li>'; 
 		
 			$('ul#predefined').append(predefined);
 		});
+
+		//Copy the list data to text inputs
 		
 		$("ul#predefined li").click(function(){
 		cur_name=$(this).children('.name').text();
@@ -42,6 +62,9 @@
 			$("#lower-thirds-name:text").val(cur_name);
 			$("#lower-thirds-function:text").val(cur_function);
 		});
+
+		//Show the lower third
+
 		var bc = new BroadcastChannel('obs-lower-thirds-channel');
 		function function_send() {
 			name_to_send = $("#lower-thirds-name:text").val();
@@ -52,9 +75,37 @@
 			
 			bc.postMessage(name_to_send + '|' + function_to_send + '|' + position + '|' + 'animateIn'); /* send */
 		};
+
+		//Hide the lower third
+
 		function function_hide() {
 			bc.postMessage('|||animateOut'); /* send - only last parameter*/
 		}
+
+		///Open settings panel
+
+		function function_settings(btn) {
+			if(btn === 1) {
+				$("#settings-page").addClass("settings-page-show");
+			}
+			else {
+				$("#settings-page").removeClass("settings-page-show");
+			}
+		}
+
+		//Set the color scheme options
+
+		var colors_schemes = ['acri', 'dark', 'rachni'];
+
+		$.each(colors_schemes, function(i) {
+			var $selected = '';
+
+			if(colors_schemes[i] == config.color_scheme) {
+				$selected = 'selected';
+			}
+
+			$('#color-scheme').append('<option name="' + colors_schemes[i] + '"' + $selected + '>' + colors_schemes[i] + '</option>');
+		});
 	</script>
 	
   </body>
