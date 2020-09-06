@@ -1,15 +1,15 @@
 :root {
     --theme-name: 'dark';
     --main-color: #fff;
-    --element-radius: 1em;
-    --obs-background: #181819;
-    --obs-background-2: #181819;
-    --input-background: #232629;
-    --input-color: #C8C7C8;
-    --obs-button-background: #162458;
-    --obs-button-border: #233166;
-    --obs-button-hover-background: #581624;
-    --obs-button-hover-border: #84162d;
+    --element-radius: 2em;
+    --obs-background: #3A393A;
+    --obs-background-2: #1F1E1F;
+    --input-background: #1F1E1F;
+    --input-color: #DEDDDE;
+    --obs-button-background: #4C4C4C;
+    --obs-button-border: #4C4C4C;
+    --obs-button-hover-background: #7A797A;
+    --obs-button-hover-border: #4C4C4C;
     --obs-button-color: #fff
   }
 

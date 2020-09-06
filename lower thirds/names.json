@@ -1,4 +1,4 @@
-var list = {
+var list_default = {
 	"predefined": [
 		{
 			"name": "Lexi Weber",

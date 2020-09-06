@@ -35,7 +35,6 @@
 		<select name="color-scheme" id="color-scheme"></select>
 	</div>
 	<div id="buttons">
-		<button class="button-settings" onclick="function_settings('ok')">Ok</button>
 		<button class="button-settings" onclick="function_settings('apply')">Apply</button>
 		<button class="button-settings" onclick="function_settings('cancel')">Cancel</button>
 	</div>
@@ -49,10 +48,14 @@
 	
 	<script>
 		//Load the color scheme style
+
+		var config = localStorage.getItem('config') ? JSON.parse(localStorage.getItem('config')) : config_default;
 		
 		$('head').append('<link rel="stylesheet" href="../common/css/color-schemes/' + config.color_scheme + '/theme.css"/>');
 		
 		//Create the predefined list
+
+		var list = localStorage.getItem('list') ? JSON.parse(localStorage.getItem('list')) : list_default;
 
 		$.each(list.predefined, function(i, predefined) {
 			predefined = '<li><div class="name">' + predefined.name + '</div><div class="function">' + predefined.function + '</div></li>'; 
@@ -95,10 +98,9 @@
 				$("#settings-page").addClass("settings-page-show");
 			}
 			else if(btn === 'apply') {
-				alert('Not applicable from UI yet.');
-			}
-			else if(btn === 'ok') {
-				$("#settings-page").removeClass("settings-page-show");
+				config_default.color_scheme = $('#color-scheme').val();
+				localStorage.setItem('config', JSON.stringify(config_default));
+				location.reload();
 			}
 			else if(btn === 'cancel') {
 				$("#settings-page").removeClass("settings-page-show");

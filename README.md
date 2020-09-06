@@ -5,8 +5,8 @@
 
 Works only on Windows, OBS 25.0+. It'll not run on Mac and Linux because there is no Custom Browser Docks feature for them yet.
 
-It's just a working proof of concept, but works OK. I use simple transition, but you can do your own template and animate with CSS transitions, keyframes or whatever you want. For communication between control panel and browser layer I use BroadcastChannel API.
+It's just a working proof of concept, but works OK and it is being improved. I use simple transition, but you can do your own template and animate with CSS transitions, keyframes or whatever you want. For communication between control panel and browser layer I use BroadcastChannel API.
 
-Panel color scheme is for OBS "Acri" theme, you can set your own colors in common/css/style-001.css (:root section).
+Panel default color scheme is for OBS "Acri" theme, there are themes for "Acri", "Dark" and "Rachni" OBS Themes, just change in settings.
 
 Of course, there's a room for improvement: locked top panel, template system, animated SVG's as icons etc.

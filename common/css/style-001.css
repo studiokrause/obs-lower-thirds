@@ -100,7 +100,7 @@ body.browser-source.clock{
 
 #settings-page {
 	box-sizing: border-box;
-	background: var(--obs-background);
+	background: var(--obs-background-2);
 	border: 5px solid var(--obs-button-border);
 	position: fixed;
 	top: -100%;
