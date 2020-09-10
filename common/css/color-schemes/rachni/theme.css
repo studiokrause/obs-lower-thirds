@@ -1,0 +1,21 @@
+:root {
+    --theme-name: 'rachni';
+    --main-color: #fff;
+    --element-radius: 4em;
+    --obs-background: #31363B;
+    --obs-background-2: #54575B;
+    --input-background: #232629;
+    --input-color: #C8C7C8;
+    --obs-button-background: #00BCD4;
+    --obs-button-border: #76797C;
+    --obs-button-hover-background: #914C67;
+    --obs-button-hover-border: #0f0408;
+    --obs-button-color: #fff
+  }
+
+  .panel .radio-position input:checked + label:before {
+    background: url("./radio_checked_focus.png") no-repeat;
+  }
+  .panel .radio-position input:not(:checked) + label:before {
+    background: url("./radio_unchecked_focus.png") no-repeat;
+  }

@@ -1,0 +1,60 @@
+var list_default = {
+	"predefined": [
+		{
+			"name": "Lexi Weber",
+			"function": "Accountant"
+		},
+		{
+			"name": "Chad Funk",
+			"function": "Actor"
+		},
+		{
+			"name": "Dorris Baumbach",
+			"function": "Air traffic controller"
+		},
+		{
+			"name": "Mateo Gleason",
+			"function": "Physician's assistant"
+		},
+		{
+			"name": "Edwin Lang",
+			"function": "Carpet designer"
+		},
+		{
+			"name": "Jude Stoltenberg",
+			"function": "Butcher"
+		},
+		{
+			"name": "Caroline McKenzie PhD",
+			"function": "Veterinarian"
+		},
+		{
+			"name": "Stephon Zieme",
+			"function": "Surgeon"
+		},
+		{
+			"name": "Maverick Nicolas DDS",
+			"function": "CEO"
+		},
+		{
+			"name": "Cortez Heller",
+			"function": "Air traffic controller"
+		},
+		{
+			"name": "Libbie Effertz",
+			"function": "Doctor"
+		},
+		{
+			"name": "Zoie Keeling",
+			"function": "Therapist"
+		},
+		{
+			"name": "Rigoberto Macejkovic",
+			"function": "Dental hygienist"
+		},
+		{
+			"name": "Magdalena Stehr",
+			"function": "Businesswoman"
+		},
+	]
+}

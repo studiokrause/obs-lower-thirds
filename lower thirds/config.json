@@ -1,0 +1,3 @@
+var config_default = {
+    "color_scheme": "acri",
+}

@@ -1,0 +1,22 @@
+:root {
+    --theme-name: 'acri';
+    --main-color: #fff;
+    --element-radius: 1em;
+    --obs-background: #181819;
+    --obs-background-2: #181819;
+    --input-background: #08080B;
+    --input-color: #C8C7C8;
+    --obs-button-background: #162458;
+    --obs-button-border: #233166;
+    --obs-button-hover-background: #581624;
+    --obs-button-hover-border: #84162d;
+    --obs-button-color: #fff
+  }
+
+  
+.panel .radio-position input:checked + label:before {
+	background: url("./radio_checked_focus.png") no-repeat;
+}
+.panel .radio-position input:not(:checked) + label:before {
+	background: url("./radio_unchecked_focus.png") no-repeat;
+}

@@ -1,0 +1,21 @@
+:root {
+    --theme-name: 'dark';
+    --main-color: #fff;
+    --element-radius: 2em;
+    --obs-background: #3A393A;
+    --obs-background-2: #1F1E1F;
+    --input-background: #1F1E1F;
+    --input-color: #DEDDDE;
+    --obs-button-background: #4C4C4C;
+    --obs-button-border: #4C4C4C;
+    --obs-button-hover-background: #7A797A;
+    --obs-button-hover-border: #4C4C4C;
+    --obs-button-color: #fff
+  }
+
+  .panel .radio-position input:checked + label:before {
+    background: url("./radio_checked_focus.png") no-repeat;
+  }
+  .panel .radio-position input:not(:checked) + label:before {
+    background: url("./radio_unchecked_focus.png") no-repeat;
+  }

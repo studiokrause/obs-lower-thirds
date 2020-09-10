@@ -7,6 +7,8 @@
     <title>Lower thirds control panel</title>
 	<link rel="stylesheet" href="../common/css/style-001.css">
 	<script src="../common/js/jquery.js"></script>
+	<script src="./names.json"></script>
+	<script src="./config.json"></script>
   </head>
   <body class="lower-thirds-panel panel">
 	<div class="static-panel-top">
@@ -14,42 +16,64 @@
 		<input id="lower-thirds-function" placeholder="Function">
 		<button class="onethird" id="sender" onclick="function_send()">Show</button>
 		<button class="onethird" id="sender" onclick="function_hide()">Hide</button>
+		<button class="onethird" id="sender" onclick="function_add()">+</button>
+		<button class="onethird" id="sender" onclick="function_remove()">-</button>
+		  <div class="button-settings">
+		  	<button class="onethird" onclick="function_settings('show')">Settings</button>
+		  </div>
 		  <div class="radio-position">
-                <input type="radio" name="radio-group-position" id="position-left" checked="checked" /><label for="position-left">Left</label>
-                <input type="radio" name="radio-group-position" id="position-right" /><label for="position-right">Right</label>
+                <input type="radio" name="radio-group-position" id="position-left" checked />
+		  		<label for="position-left">Left</label>
+                <input type="radio" name="radio-group-position" id="position-right" />
+				<label for="position-right">Right</label>
            </div>
 		   <div style="clear:both"></div>
 		   
-		
+<div id="settings-page">
+	<div id="theme">
+		<p>Theme</p>
+		<select name="color-scheme" id="color-scheme"></select>
+	</div>
+	<div id="buttons">
+		<button class="button-settings" onclick="function_settings('apply')">Apply</button>
+		<button class="button-settings" onclick="function_settings('cancel')">Cancel</button>
+	</div>
+</div>
 </div>
 	</div>
 	<div class="panel-bottom">
 		<h3>Lower thirds list</h3>
-		<ul id="predefined">
-			<li><div class="name">Lexi Weber</div><div class="function">Accountant</div></li>
-			<li><div class="name">Chad Funk</div><div class="function">Actor</div></li>
-			<li><div class="name">Dorris Baumbach</div><div class="function">Air traffic controller</div></li>
-			<li><div class="name">Mateo Gleason</div><div class="function">Physician's assistant</div></li>
-			<li><div class="name">Edwin Lang</div><div class="function">Carpet designer</div></li>
-			<li><div class="name">Jude Stoltenberg</div><div class="function">Butcher</div></li>
-			<li><div class="name">Caroline McKenzie PhD</div><div class="function">Veterinarian</div></li>
-			<li><div class="name">Stephon Zieme</div><div class="function">Surgeon</div></li>
-			<li><div class="name">Maverick Nicolas DDS</div><div class="function">CEO</div></li>
-			<li><div class="name">Cortez Heller</div><div class="function">Air traffic controller</div></li>
-			<li><div class="name">Libbie Effertz</div><div class="function">Doctor</div></li>
-			<li><div class="name">Zoie Keeling</div><div class="function">Therapist</div></li>
-			<li><div class="name">Rigoberto Macejkovic</div><div class="function">Dental hygienist</div></li>
-			<li><div class="name">Magdalena Stehr</div><div class="function">Businesswoman</div></li>
-		</ul>
+		<ul id="predefined"></ul>
 	<div>
 	
 	<script>
+		//Load the color scheme style
+
+		var config = localStorage.getItem('config') ? JSON.parse(localStorage.getItem('config')) : config_default;
+		
+		$('head').append('<link rel="stylesheet" href="../common/css/color-schemes/' + config.color_scheme + '/theme.css"/>');
+		
+		//Create the predefined list
+
+		var list = localStorage.getItem('list') ? JSON.parse(localStorage.getItem('list')) : list_default;
+
+		$.each(list.predefined, function(i, predefined) {
+			predefined = '<li><div class="name">' + predefined.name + '</div><div class="function">' + predefined.function + '</div></li>'; 
+		
+			$('ul#predefined').append(predefined);
+		});
+
+		//Copy the list data to text inputs
+		
 		$("ul#predefined li").click(function(){
 		cur_name=$(this).children('.name').text();
 		cur_function=$(this).children('.function').text();
 			$("#lower-thirds-name:text").val(cur_name);
 			$("#lower-thirds-function:text").val(cur_function);
 		});
+
+		//Show the lower third
+
 		var bc = new BroadcastChannel('obs-lower-thirds-channel');
 		function function_send() {
 			name_to_send = $("#lower-thirds-name:text").val();
@@ -60,9 +84,42 @@
 			
 			bc.postMessage(name_to_send + '|' + function_to_send + '|' + position + '|' + 'animateIn'); /* send */
 		};
+
+		//Hide the lower third
+
 		function function_hide() {
 			bc.postMessage('|||animateOut'); /* send - only last parameter*/
 		}
+
+		///Open settings panel
+
+		function function_settings(btn) {
+			if(btn === 'show') {
+				$("#settings-page").addClass("settings-page-show");
+			}
+			else if(btn === 'apply') {
+				config_default.color_scheme = $('#color-scheme').val();
+				localStorage.setItem('config', JSON.stringify(config_default));
+				location.reload();
+			}
+			else if(btn === 'cancel') {
+				$("#settings-page").removeClass("settings-page-show");
+			}
+		}
+
+		//Set the color scheme options
+
+		var colors_schemes = ['acri', 'dark', 'rachni'];
+
+		$.each(colors_schemes, function(i) {
+			var $selected = '';
+
+			if(colors_schemes[i] == config.color_scheme) {
+				$selected = 'selected';
+			}
+
+			$('#color-scheme').append('<option name="' + colors_schemes[i] + '"' + $selected + '>' + colors_schemes[i] + '</option>');
+		});
 	</script>
 	
   </body>
